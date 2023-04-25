@@ -1,6 +1,10 @@
 const express = require("express");
 const cors = require("cors");
 const productsRouter = require("./app/routes/product.route");
+const cartsRouter = require("./app/routes/cart.route");
+const usersRouter = require("./app/routes/user.route");
+const ordersRouter = require("./app/routes/order.route");
+//const authsRoute = require("./app/routes/auth.route");
 const ApiError = require("./app/api-error");
 
 const app = express();
@@ -8,6 +12,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use("/api/products", productsRouter);
+app.use("/api/carts", cartsRouter);
+app.use("/api/orders", ordersRouter);
+app.use("/api/users", usersRouter);
+//app.use("/api/auths", authsRoute);
 
 app.get("/", (req, res) => {
     res.json({ message: "Welcome to senda shop application." });
